@@ -1,37 +1,81 @@
-document.getElementById("questionForm").addEventListener("submit", function (e) {
-  e.preventDefault();
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fefefe;
+  color: #333;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1em;
+}
 
-  // 入力値の取得
-  const title = document.getElementById("title").value;
-  const description = document.getElementById("description").value;
-  const options = [
-    document.getElementById("option1").value,
-    document.getElementById("option2").value,
-    document.getElementById("option3").value,
-    document.getElementById("option4").value,
-  ].filter((opt) => opt !== "");
+h1, h2 {
+  text-align: center;
+  color: #2c3e50;
+}
 
-  // 投稿された質問のHTMLを作成
-  const questionHTML = `
-    <div class="question">
-      <h2>${title}</h2>
-      <p>${description}</p>
-      <ul>
-        ${options
-          .map((opt) => `<li><button onclick="vote(this)">${opt}</button></li>`)
-          .join("")}
-      </ul>
-    </div>
-  `;
+form {
+  background-color: #f2f2f2;
+  padding: 1em;
+  border-radius: 8px;
+  margin-bottom: 2em;
+}
 
-  // ページに表示
-  document.getElementById("questionsList").innerHTML += questionHTML;
+input, textarea {
+  width: 100%;
+  padding: 0.6em;
+  margin: 0.5em 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
 
-  // フォームをリセット
-  this.reset();
-});
+button {
+  padding: 0.6em 1.2em;
+  border: none;
+  background-color: #3498db;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
-// 投票ボタンの処理
-function vote(button) {
-  alert(`「${button.innerText}」に投票しました！`);
+button:hover {
+  background-color: #2980b9;
+}
+
+.question-card {
+  border: 1px solid #ccc;
+  padding: 1em;
+  border-radius: 6px;
+  margin-bottom: 1em;
+  background-color: #fff;
+}
+
+.option-button {
+  display: inline-block;
+  margin: 0.3em 0.6em 0 0;
+  padding: 0.4em 0.8em;
+  background-color: #ecf0f1;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.option-button:hover {
+  background-color: #bdc3c7;
+}
+
+.voted {
+  background-color: #d1f0d1;
+  font-weight: bold;
+}
+
+ul#rankingList {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul#rankingList li {
+  padding: 0.5em;
+  border-bottom: 1px solid #ccc;
 }
