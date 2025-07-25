@@ -1,82 +1,64 @@
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #fefefe;
-  color: #333;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 1em;
-}
+// 投稿の配列を格納するローカル変数
+let posts = [];
 
-h1, h2 {
-  text-align: center;
-  color: #2c3e50;
-}
+// 投稿フォームの送信処理
+document.getElementById("postForm").addEventListener("submit", function (e) {
+  e.preventDefault();
 
-form {
-  background-color: #f2f2f2;
-  padding: 1em;
-  border-radius: 8px;
-  margin-bottom: 2em;
-}
+  const title = document.getElementById("title").value.trim();
+  const description = document.getElementById("description").value.trim();
+  const optionInputs = document.querySelectorAll(".option-input");
 
-input, textarea {
-  width: 100%;
-  padding: 0.6em;
-  margin: 0.5em 0;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-}
+  const options = [];
+  optionInputs.forEach(input => {
+    const text = input.value.trim();
+    if (text) {
+      options.push({ text: text, votes: 0 });
+    }
+  });
 
-button {
-  padding: 0.6em 1.2em;
-  border: none;
-  background-color: #3498db;
-  color: white;
-  font-weight: bold;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: 0.3s;
-}
+  if (title && description && options.length >= 2) {
+    const post = { title, description, options };
+    posts.push(post);
+    renderPosts();
+    this.reset(); // フォームをリセット
+  }
+});
 
-button:hover {
-  background-color: #2980b9;
-}
+// 投稿と選択肢を表示
+function renderPosts() {
+  const postList = document.getElementById("postList");
+  postList.innerHTML = '<h2>🗳️ 投稿一覧と投票</h2>'; // 見出しを再描画
 
-.question-card {
-  border: 1px solid #ccc;
-  padding: 1em;
-  border-radius: 6px;
-  margin-bottom: 1em;
-  background-color: #fff;
-}
+  posts.forEach((post, postIndex) => {
+    const postDiv = document.createElement("div");
+    postDiv.className = "post";
 
-.option-button {
-  display: inline-block;
-  margin: 0.3em 0.6em 0 0;
-  padding: 0.4em 0.8em;
-  background-color: #ecf0f1;
-  border: 1px solid #aaa;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.2s;
-}
+    const titleEl = document.createElement("div");
+    titleEl.className = "post-title";
+    titleEl.textContent = post.title;
 
-.option-button:hover {
-  background-color: #bdc3c7;
-}
+    const descEl = document.createElement("div");
+    descEl.className = "post-description";
+    descEl.textContent = post.description;
 
-.voted {
-  background-color: #d1f0d1;
-  font-weight: bold;
-}
+    postDiv.appendChild(titleEl);
+    postDiv.appendChild(descEl);
 
-ul#rankingList {
-  list-style: none;
-  padding-left: 0;
-}
+    // 各選択肢ボタン
+    post.options.forEach((option, optionIndex) => {
+      const optionBtn = document.createElement("div");
+      optionBtn.className = "option";
+      optionBtn.innerHTML = `${option.text} <span class="vote-count">${option.votes}票</span>`;
 
-ul#rankingList li {
-  padding: 0.5em;
-  border-bottom: 1px solid #ccc;
-}
+      optionBtn.addEventListener("click", () => {
+        posts[postIndex].options[optionIndex].votes++;
+        renderPosts(); // 再描画
+      });
 
+      postDiv.appendChild(optionBtn);
+    });
+
+    postList.appendChild(postDiv);
+  });
+}
