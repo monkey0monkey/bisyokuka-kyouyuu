@@ -1,0 +1,47 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background: #fffefa;
+  color: #333;
+}
+
+h1 {
+  color: #ff7043;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+input,
+textarea {
+  display: block;
+  margin: 10px 0;
+  width: 300px;
+  padding: 8px;
+  font-size: 14px;
+}
+
+button {
+  padding: 10px 20px;
+  background: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  background: #45a049;
+}
+
+#questionsList {
+  margin-top: 30px;
+}
+
+.question {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 20px;
+  background: #fefefe;
+}
