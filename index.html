@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>美食家さん - 知恵袋・投票</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>🍴 美食家さん - みんなで決める「今日のごはん」</h1>
+  <h1>🍴 美食家さん - 知恵袋・投票</h1>
 
   <form id="questionForm">
-    <input type="text" id="title" placeholder="質問タイトル" required />
-    <textarea id="description" placeholder="詳細（例：卵とピーマンがある）" required></textarea>
-    <input type="text" id="option1" placeholder="選択肢1" required />
-    <input type="text" id="option2" placeholder="選択肢2" required />
-    <input type="text" id="option3" placeholder="選択肢3" />
-    <input type="text" id="option4" placeholder="選択肢4" />
-    <button type="submit">質問を投稿</button>
+    <input type="text" id="title" placeholder="質問タイトル" required>
+    <textarea id="description" placeholder="質問内容を入力（例：卵とピーマンがあるけど何作る？）" required></textarea>
+    <input type="text" class="option" placeholder="選択肢1" required>
+    <input type="text" class="option" placeholder="選択肢2" required>
+    <input type="text" class="option" placeholder="選択肢3">
+    <input type="text" class="option" placeholder="選択肢4">
+    <button type="submit">投稿</button>
   </form>
 
+  <h2>投稿一覧</h2>
   <div id="questionsList"></div>
+
+  <h2>📊 投票ランキング</h2>
+  <ul id="rankingList"></ul>
 
   <script src="script.js"></script>
 </body>
 </html>
+
