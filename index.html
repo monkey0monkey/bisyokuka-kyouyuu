@@ -2,27 +2,29 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>美食家さん - 知恵袋・投票</title>
+  <title>美食家さん - 投票掲示板</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>🍴 美食家さん - 知恵袋・投票</h1>
+  <h1>🍽️ 美食家さん - 投票掲示板</h1>
 
-  <form id="questionForm">
-    <input type="text" id="title" placeholder="質問タイトル" required>
-    <textarea id="description" placeholder="質問内容を入力（例：卵とピーマンがあるけど何作る？）" required></textarea>
-    <input type="text" class="option" placeholder="選択肢1" required>
-    <input type="text" class="option" placeholder="選択肢2" required>
-    <input type="text" class="option" placeholder="選択肢3">
-    <input type="text" class="option" placeholder="選択肢4">
-    <button type="submit">投稿</button>
-  </form>
+  <section class="form-section">
+    <h2>新しい投稿を作成</h2>
+    <form id="postForm">
+      <input type="text" id="title" placeholder="タイトル（例：お家デートの料理案）" required><br>
+      <textarea id="description" placeholder="質問の詳細（例：彼女はトマトが苦手で、甘めの料理が好き）" required></textarea><br>
+      <input type="text" class="option-input" placeholder="選択肢①" required>
+      <input type="text" class="option-input" placeholder="選択肢②" required>
+      <input type="text" class="option-input" placeholder="選択肢③">
+      <input type="text" class="option-input" placeholder="選択肢④"><br>
+      <button type="submit">投稿する</button>
+    </form>
+  </section>
 
-  <h2>投稿一覧</h2>
-  <div id="questionsList"></div>
-
-  <h2>📊 投票ランキング</h2>
-  <ul id="rankingList"></ul>
+  <section id="postList">
+    <h2>🗳️ 投稿一覧と投票</h2>
+    <!-- 投稿がここに表示される -->
+  </section>
 
   <script src="script.js"></script>
 </body>
