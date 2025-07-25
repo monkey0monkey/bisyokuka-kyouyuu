@@ -1,47 +1,80 @@
 body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
-  background: #fffefa;
+  font-family: "Helvetica Neue", sans-serif;
+  background-color: #fafafa;
   color: #333;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-h1 {
-  color: #ff7043;
+h1, h2 {
+  text-align: center;
+  color: #2c3e50;
 }
 
-form {
-  margin-bottom: 20px;
+.form-section {
+  background-color: #f0f0f0;
+  padding: 15px;
+  margin-bottom: 30px;
+  border-radius: 8px;
 }
 
-input,
-textarea {
-  display: block;
-  margin: 10px 0;
-  width: 300px;
-  padding: 8px;
-  font-size: 14px;
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 6px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 button {
-  padding: 10px 20px;
-  background: #4caf50;
-  color: white;
+  padding: 10px 15px;
+  background-color: #3498db;
   border: none;
+  color: white;
+  border-radius: 5px;
+  font-weight: bold;
   cursor: pointer;
-  font-size: 14px;
 }
 
 button:hover {
-  background: #45a049;
+  background-color: #2980b9;
 }
 
-#questionsList {
-  margin-top: 30px;
-}
-
-.question {
-  border: 1px solid #ccc;
+.post {
+  background-color: white;
   padding: 15px;
   margin-bottom: 20px;
-  background: #fefefe;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.post-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.post-description {
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.option {
+  display: block;
+  background-color: #eee;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.option:hover {
+  background-color: #dcdcdc;
+}
+
+.vote-count {
+  float: right;
+  font-weight: bold;
+  color: #2c3e50;
 }
